@@ -1,8 +1,8 @@
-let emptyEmoji = "󠀠‎"
-
 import { dfs, bfs, sightCheck, boardToBoolean, transparency } from './pathfinding.jsx'
 import { makeRandomMap, superimposeBoard } from './mapgen.jsx'
 import { spells, classes, createItem, createBuilding, createEnemy, createEquipment, createRandBuilding, createRegularRandMonster, createRandItem, createScaledRandMonster, sortObjects, dropUniqueObj } from './objects.jsx'
+
+let emptyEmoji = "󠀠‎"
 
 export function createGame(floor) {
   let game = {
