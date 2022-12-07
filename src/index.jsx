@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createGame, createObject, update, objectSummary, squareSummary, healthDisplay, outputLog, printStatus, charInArr, colorInArr, transparencyInArr, objOverlay, objOverlayTransparency, objOverlayColor, switchInfo, getStat } from './App.jsx'
+import { createGame, createObject, update, objectSummary, squareSummary, healthDisplay, outputLog, printStatus, charInArr, colorInArr, transparencyInArr, objOverlay, objOverlayTransparency, objOverlayColor, switchInfo, getStat } from './game.jsx'
 import { classes } from './objects.jsx'
 import './App.css'
 import { useEffect } from 'react';
