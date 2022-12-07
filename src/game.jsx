@@ -268,7 +268,7 @@ function createWall(game, startx, endx, starty, endy) {
   }
 }
 
-function useItem(game, player, inv_num) {
+function itemUse(game, player, inv_num) {
   let p = player;
   let free = !(p.inventory[inv_num].freeAction)
   if (p.inventory[inv_num]) {
@@ -296,7 +296,7 @@ function useItem(game, player, inv_num) {
   }
 }
 
-function useSpell(game, player, spell) {
+function spellUse(game, player, spell) {
   let p = player;
   if (p.mana < spell.mana ? spell.mana : 0) {
     logAction(game, "outOfMana", p, null, { spell: spell.name })
@@ -371,7 +371,7 @@ export function update(game) {
       if (game.displaySpells.check) {
         game.displaySpells.check = false;
         console.log(p.input)
-        moved = useSpell(game, p, p.spells[p.input])
+        moved = spellUse(game, p, p.spells[p.input])
       }
       p.input = null;
     }
@@ -568,7 +568,7 @@ export function update(game) {
             }
             else {
               p.inStats.check = false;
-              moved = useItem(game, p, s)
+              moved = itemUse(game, p, s)
               p.input = null
             }
           }
