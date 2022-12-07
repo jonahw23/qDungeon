@@ -1,38 +1,449 @@
-.App {
-  text-align: center;
+body {
+  /*Chromebook or small screen settings*/
+  font: 5vmin; 
+  margin-top: 10vh;
+  margin-left: 14vw;
+  background-image:url('https://i.imgur.com/VKuhojw.png'); 
+  background-repeat: no-repeat; 
+  background-size: 100% 115%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ol, ul {
+  padding-left: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logo{
+  margin-top: 6vw;
+  height: 15vw;
+  width: 50vw;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.entryField{
+  font: calc(2vh + 1vw) "Courier New";
+  margin: auto;
+  margin-top: 40px;
+}
+
+.playButton{
+  font: calc(2vh + 1vw) "Courier New";
+  margin-left: 5px;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+.entry{
+  font: calc(2vh + 1vw) "Courier New";
+  width: 75%;
+  margin: auto;
+  padding-top: 1vw;
+  padding-bottom: 8%;
+}
+
+.popup{
+  background: #c2c1c1;
+  display:flex;
+  justify-content: center;
+  font: 200% "Courier New";
+  height: 60%;
+  width: 50%;
+  top: 20%;
+  left: 25%;
+  opacity: 1;
+  position: absolute;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #6e6e6e;
+  line-height: 5%;
+  vertical-align:center;
+}
+
+.endBack{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 46.9%;
+}
+
+#container { 
+  height: 100%;
+  width: 100%;
   display: flex;
-  flex-direction: column;
+}
+
+#playerState{
+  font: calc(1vh + 1vw) "Courier New";
+  margin-left: 2vw;
+  margin-top: 0;
+  width: 40%;
+}
+
+#board-row:after {
+  width: 60%;
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.square {
+  background: #5c5c5c;
+  border: 0px solid #ffffff;
+  float: center;
+  font-size: 3.3vw;
+  font-weight: bold;
+  /*
+  color: rgba(0,0,0,0.5);
+  text-shadow: 0px 0px red;
+  */
+  line-height: 0vmin;
+  height: 5vw;
+  width: 5vw;
+  /*
+  margin-right: 2px;
+  margin-top: 2px;
+  */
+  padding: 0%;
+  text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.overlay{
+  padding: 0%;
+   border: 0px solid #ffffff;
+   height: -100%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 100%;
+   position: relative;
+    margin: -1px;
+  left:10%;
+  top: 0%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+ .damage {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+   font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: -84%;
+  top: -45%;
+    margin: 0px;
+   text-align: center;
+  align-items: center;
+  justify-content: center;
+   color: red;
+ } 
+
+.status {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: -85%;
+  top: 16%;
+    margin: 0px;
+   text-align: center;
+  align-items: center;
+  justify-content: center;
+ } 
+.health {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: 20%;
+  top: -45%;
+    margin: 0px;
+   text-align: center;
+  align-items: center;
+  justify-content: center;
+ } 
+
+.healthBarBack {
+  width: 15vw;
+  height: 3vw;
+  padding: 0;
+  border: 0px solid #000000;
+  background: #aaaaaa;
+  font-size: 100%;
+
+}
+
+.healthBar {
+  left: 0%;
+  top: 0%;
+  padding: 0;
+  border: 0px solid #000000;
+  background: #00aa11;
+  text-align: left;
+  postion:releative;
+  display: flex;
+  font-size: 100%;
+  align-items:center;
+}
+
+.outerLog{
+  width: 38vw;
+  height: 15vw;
+  overflow: hidden;
+  position: relative;
+  top: 170%; 
+  left: 0%;
+}
+
+.innerLog{
+  position: absolute;
+  top: 0;
+  bottom: 0px;
+  left: 0%;
+  right: -5%; 
+  overflow: auto;
+
+display: flex;
+  flex-direction: column-reverse;
+ }
+
+.inventory{
+  background: rgba(100,100,100,0.3);
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  /*
+  flex-direction: row;
+  flex-wrap: wrap;
+  */
+}
+.inv_num {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: 6%;
+  top: -35%;
+    margin: 0px;
+   text-align: center;
+  align-items: center;
+  justify-content: center;
+ } 
+.box{
+  background: #d4d4d4;
+  height: 18%;
+  width: min(5vw, 15%);
+  margin-left: 3.3%;
+  margin-right: 3.2%;
+  margin-top: 2.9%;
+  font-size: 3vw;
+  line-height: 0;
+  padding: 0px;
+  vertical-align:top;
+}
+.bar{
+  background: #d4d4d4;
+  height: 15vh;
+  width: 45vw;
+  margin-left: 0%;
+  margin-top: 3%;
+  font: 1.7vw "Courier New";
+  line-height: 20%;
+  padding-left: 3%;
+  padding-top:0%;
+  text-align:left;
+  vertical-align:top;
+}
+
+@media screen and (min-width: 800px) and (min-height: 650px) {
+  /*Wide screen, large screen*/
+
+  body {
+  font: 5vmin; 
+  margin-top: 12vh;
+  margin-left: 12vw;
+  background-image:url('https://i.imgur.com/VKuhojw.png'); 
+  background-repeat: no-repeat; 
+  background-size: 100% 115%;
+}
+
+ol, ul {
+  padding-left: 0;
+}
+
+.logo{
+  margin-top: 10vw;
+  height: 15vw;
+  width: 50vw;
+}
+
+.popup{
+  height: 50%;
+}
+
+.entryField{
+  font: calc(2vh + 1vw) "Courier New";
+  margin: auto;
+  margin-top: 40px;
+}
+
+.playButton{
+  font: calc(2vh + 1vw) "Courier New";
+  margin-left: 5px;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+.entry{
+  font: calc(2vh + 1vw) "Courier New";
+  width: 75%;
+  margin: auto;
+  padding-top: 1vw;
+  padding-bottom: 11%;
+}
+
+.endBack{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin-top: 56.3%;
+}
+
+ .damage {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+   font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: -85%;
+  top: -45%;
+    margin: 0px;
+   text-align: center;
+  align-items: center;
+  justify-content: center;
+   color: red;
+ } 
+
+.status {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: -93%;
+  top: 13%;
+    margin: 0px;
+   text-align: center;
+  align-items: center;
+  justify-content: center;
+ } 
+
+.overlay{
+  padding: 0;
+   border: 0px solid #ffffff;
+   height: -100%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 100%;
+   position: relative;
+    margin: 0px;
+  left:5%;
+  top:0%;
+}
+
+.health {
+     padding: 0;
+   border: 0px solid #ffffff;
+   height: 0%;
+  width: 0%;
+  font-weight: bold;
+   font-size: 30%;
+   position: relative;
+  left: 24%;
+  top: -50%;
+    margin: 0px;
+  align-items: center;
+  justify-content: center;
+  text-align: right;
+ }
+  
+.square {
+  background: #5c5c5c;
+  border: 0px solid #ffffff;
+  float: center;
+  font-size: 4vw;
+  font-weight: bold;
+  line-height: 0vmin;
+  height: 6vw;
+  width: 6vw;
+  /*
+  margin-right: 2px;
+  margin-top: 2px;
+  */
+
+  padding: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   }
-  to {
-    transform: rotate(360deg);
+  .outerLog{
+    width: 33vw;
+    height: 21vw;
+    overflow: hidden;
+    position: relative;
+}
+  .innerLog{
+    position: absolute;
+    top: 0;
+    bottom: 0px;
+    padding-right:5px;
+    left: 0%;
+    right: -5%; 
+    overflow: auto;
+  
+  display: flex;
+    flex-direction: column-reverse;
+  }
+  
+.inventory{
+  background: rgba(100,100,100,0.3);
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  /*
+  flex-direction: row;
+  flex-wrap: wrap;
+  */
+  }
+  .bar{
+    background: #d4d4d4;
+    height: 15vh;
+    width: 45vw;
+    margin-left: 0%;
+    margin-top: 3%;
+    font: 1.7vw "Courier New";
+    line-height: 20%;
+    padding-left: 3%;
+    padding-top:0%;
+    text-align:left;
+    vertical-align:top;
+  }
+  .box{
+    font-size: 3.5vw;
+    width:5vw;
   }
 }
