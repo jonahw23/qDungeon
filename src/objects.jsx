@@ -1,4 +1,4 @@
-import { createObject, logAction, rangedAttackSelect, getStatusEmojiName, findObj } from './game.jsx'
+import { createObject, logAction, rangedAttackSelect, getStatusEmojiName, findObj } from './App.jsx'
 
 let emptyEmoji = "󠀠‎"
 
