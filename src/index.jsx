@@ -71,7 +71,7 @@ class Board extends React.Component {
       );
     } else {
       <Square
-        color={red}
+        color={"red"}
       />
     }
   }
