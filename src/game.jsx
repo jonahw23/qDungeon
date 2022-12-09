@@ -153,7 +153,7 @@ function generateObjects(game) {
 
   for (let y = 0; y < game.board.length; y++) {
     for (let x = 0; x < game.board[0].length; x++) {
-      if (game.board[y][x] === 0 && Math.random() < 0.25) {//0.025
+      if (game.board[y][x] === 0 && Math.random() < 0.025) {//0.025
         game.objects.push(createRandBuilding(x, y))
       }
     }
