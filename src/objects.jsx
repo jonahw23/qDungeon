@@ -172,7 +172,6 @@ let shopEquipment = [
 function chooseEquipment(num){
   //Choose num random equipment from shopEquipment and return them in an array
   let arr = []
-  console.log(shopEquipment)
   for(let i = 0; i < num; i++){
     let add = shopEquipment[Math.floor(Math.random()*shopEquipment.length)]
     while(arr.includes(add)){
@@ -248,7 +247,7 @@ export function createBuilding(name, x, y, params) {
       building.color = "#664003";
       building.transparency = 0.5;
       building.buildingType = "stairs";
-      console.log("stairs at", x, y)
+      //console.log("stairs at", x, y)
       break;
   }
   if(building.shop && building.shop.buy){
