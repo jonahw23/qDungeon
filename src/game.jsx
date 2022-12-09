@@ -756,13 +756,20 @@ export function update(game) {
                   o[i].y = path[1][1]
                 } //end else if
                 else if (o[i].movement !== "stationary" && o[i].movement !== "passive") { //if first choice of movement fails, but movement still wanted, do this instead
-                  for (let i = 2; i < path.length; i++) {
-                    let d1 = [path[1][0] - o[i].x, path[1][1] - o[i].y]
-                    let d2 = [path[i][0] - path[i - 1][0], path[i][1] - path[i - 1][1]]
+                  //path??
+                  //boulders are moving here but not normally???
+                  let d1 = [path[1][0] - o[i].x, path[1][1] - o[i].y]
+
+                  for (let j = 2; j < path.length; j++) {
+
+                    let d2 = [path[j][0] - path[j - 1][0], path[j][1] - path[j - 1][1]]
                     if (!(d1[0] === d2[0] && d1[1] === d2[1])) {
                       let p = [o[i].x + d2[0], o[i].y + d2[1]]
                       if (game.board[p[0]][p[1]] === 0 && findObj(game, p[0], p[1]).maxHealth < 0) {
-                        console.log(o[i], p)
+
+                        console.log(o[i].name, j, o[i].x, o[i].y)
+                        console.log(d1, d2)
+
                         o[i].x = p[0]
                         o[i].y = p[1]
                         break
