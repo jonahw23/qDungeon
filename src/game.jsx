@@ -153,7 +153,7 @@ function generateObjects(game) {
 
   for (let y = 0; y < game.board.length; y++) {
     for (let x = 0; x < game.board[0].length; x++) {
-      if (game.board[y][x] === 0 && Math.random() < 0.025) {//0.025
+      if (game.board[y][x] === 0 && Math.random() < 0.25) {//0.025
         game.objects.push(createRandBuilding(x, y))
       }
     }
@@ -384,6 +384,7 @@ export function update(game) {
         }
         if (findObjInDict(game, p.x, p.y).buildingType === "stairs") {
           let newGame = createGame(game.floor + 1)
+          setTimeout(() => {
           newGame.objects.splice(0, 1)
           for (const [key, value] of Object.entries(newGame)) {
             if (key !== "player" && key !== "floor" && key !== "class")
@@ -394,11 +395,11 @@ export function update(game) {
           p.y = newGame.player.y
 
           game.floor = newGame.floor
-          delete newGame["player"]
           p.input = null;
-          //breaks game in the same way your savestate thing did
-          return game
-
+            
+          //return game
+          }, 50)
+          //console.log(game)
         }
         p.input = null;
       }
