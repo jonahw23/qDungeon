@@ -13,7 +13,7 @@ function Square(props) {
 
       <span style={
         {
-          "text-shadow": "0 0 " + props.effects[0],
+          "textShadow": "0 0 " + props.effects[0],
           "color": "rgba(0, 0, 0, " + props.effects[1] + ")"
         }}>
         {[props.value]}
@@ -28,7 +28,7 @@ function Square(props) {
       <p className={"overlay"}>
         <span style={
           {
-            "text-shadow": "0 0 " + props.overColor,
+            "textShadow": "0 0 " + props.overColor,
             "color": "rgba(0,0,0," + props.overOpacity + ")"
           }}>
           {props.overlay}
@@ -119,7 +119,7 @@ class Board extends React.Component {
       //If displaying game info, do this
       return <div> {this.drawBoard(game, 1)}
         <div style={{ position: "fixed", background: "black", top: "0", left: "0", color: "black", height: "100vh", width: "100vw", opacity: "0.5" }}></div>
-        <button style={{ width: "5vh", height: "5vh", position: "fixed", left: "3%", top: "6%", "border-radius": "50%", font: "3.5vh Courier New" }} onClick={() => { game.displayInfo = !(game.displayInfo); this.setState({ count: this.state.count + 1 }); }}>X</button>
+        <button style={{ width: "5vh", height: "5vh", position: "fixed", left: "3%", top: "6%", "borderRadius": "50%", font: "3.5vh Courier New" }} onClick={() => { game.displayInfo = !(game.displayInfo); this.setState({ count: this.state.count + 1 }); }}>X</button>
         <div className="popup" style={{ "justify-content": "left", height: "60%", "flex-direction": "column", "padding-right": "20px" }}>
           <p style={{ "margin-left": "2%", width: "100%", height: "10%" }}>Game Controls:</p>
           <p style={{ "margin-left": "2%", font: "50% Courier New", width: "100%", height: "10%", "margin-top": "-6%" }}>qDungeon is a turn-based, in-browser, dungeon-crawler game. <br></br><br></br>Use the arrow keys to navigate around the board. Moving into enemies auto-attacks them with your melee attack, and after each action you take, your enemies will move and attack.<br></br><br></br>Press "P" while standing on top of an item to pick it up, adding it to your inventory. While standing on a building, press "P" to enter it.<br></br><br></br>Press "S" to see your spell/ability menu and press "I" to see your inventory and equip weapons or armor. <br></br>⠀- Use arrow keys to navigate those menus. <br></br>⠀- Press enter to use an item or ability.<br></br>⠀- You can't use an ability unless you have enough mana for it.<br></br><br></br>If you get lost, press "M" to pull up a map of the areas of the dungeon you've explored so far.</p>
@@ -174,7 +174,7 @@ class Board extends React.Component {
       </div >
     }
     return <div id="container">
-      <button style={{ width: "5vh", height: "5vh", position: "fixed", left: "3%", top: "6%", "border-radius": "50%", font: "3.5vh Courier New" }} onClick={() => { game.displayInfo = !(game.displayInfo); this.setState({ count: this.state.count + 1 }); }}>i</button>
+      <button style={{ width: "5vh", height: "5vh", position: "fixed", left: "3%", top: "6%", "borderRadius": "50%", font: "3.5vh Courier New" }} onClick={() => { game.displayInfo = !(game.displayInfo); this.setState({ count: this.state.count + 1 }); }}>i</button>
       {this.drawRow(game, -1, 0)}
       <div id="playerState" style={{ position: "relative", height: "100%" }}>
         <p>{game.class.name}: {game.player.name}</p>
@@ -183,16 +183,16 @@ class Board extends React.Component {
           <div className="healthBar" style={{ width: (100 * game.player.health / game.player.maxHealth) + "%", height: "100%" }}>
             <div style={{ position: "relative", left: "3%" }}>{game.player.health + "/" + game.player.maxHealth}</div>
           </div>
-          <div style={{ position: "absolute", right: "-25%", bottom: "5%", 'font-size': "135%" }}> {printStatus(game.player.status)}</div>
+          <div style={{ position: "absolute", right: "-25%", bottom: "5%", 'fontSize': "135%" }}> {printStatus(game.player.status)}</div>
         </div>
         <div className="healthBarBack" style={{ position: "absolute", top: "100%" }}>
-          <div className="healthBar" style={{ 'background-color': "yellow", width: (100 * game.player.mana / game.player.maxMana) + "%", height: "100%" }}>
+          <div className="healthBar" style={{ 'backgroundColor': "yellow", width: (100 * game.player.mana / game.player.maxMana) + "%", height: "100%" }}>
             <div style={{ position: "relative", left: "3%" }}>{game.player.mana + "/" + game.player.maxMana}</div>
           </div>
 
         </div>
         <div className="healthBarBack" style={{ position: "absolute", top: "135%" }}>
-          <div className="healthBar" style={{ 'background-color': "#55D1FF", width: (100 * (game.player.XP.total - (game.player.XP.nextLevel - game.player.XP.next)) / (game.player.XP.next)) + "%", height: "100%" }}>
+          <div className="healthBar" style={{ 'backgroundColor': "#55D1FF", width: (100 * (game.player.XP.total - (game.player.XP.nextLevel - game.player.XP.next)) / (game.player.XP.next)) + "%", height: "100%" }}>
             <p style={{ position: "relative", "white-space": "nowrap" }}>{"󠀠  XP: " + game.player.XP.total}</p>
           </div>
 
@@ -210,7 +210,7 @@ class Board extends React.Component {
   }
   drawClasses(game, i) {
     return <div>
-      <button className="box" style={{ "font-size": "6vw", position: "absolute", width: "12vw", height: "12vw", left: i * 20 + "vw", background: game.class.select === i ? "#a3a3a3" : "#d4d4d4" }}
+      <button className="box" style={{ "fontSize": "6vw", position: "absolute", width: "12vw", height: "12vw", left: i * 20 + "vw", background: game.class.select === i ? "#a3a3a3" : "#d4d4d4" }}
       >
         <span style={{
           //no span currently
@@ -246,7 +246,7 @@ class Board extends React.Component {
     return <button className="box" style={{ width: "100%", background: game.player.inShop.active[0] === 0 ? (game.player.inShop.active[1] === i + 1 ? "#a3a3a3" : "#d4d4d4") : "#d4d4d4" }}
       title={game.player.inShop.shop.buy.items[i].name}>
       <span style={{
-        "text-shadow": "0 0 " + game.player.inShop.shop.buy.items[i].color,
+        "textShadow": "0 0 " + game.player.inShop.shop.buy.items[i].color,
         "color": "rgba(0, 0, 0, " + game.player.inShop.shop.buy.items[i].transparency + ")"
       }}>
         {game.player.inShop.shop.buy.items[i].char}
@@ -289,7 +289,7 @@ class Board extends React.Component {
     let p = game.player
     if (k === 0) {
       return <div style={{ position: "absolute", width: "100%", height: "100%", "margin-left": "3%", display: "flex", "flex-direction": "row", "flex-wrap": "wrap" }}>
-        <div style={{ position: "absolute", width: "40%", "margin-top": "4%", "white-space": "pre-wrap", "line-height": "100%", "background": "rgba(100,100,100,0.1", "font-size": "2vw" }}>
+        <div style={{ position: "absolute", width: "40%", "margin-top": "4%", "white-space": "pre-wrap", "line-height": "100%", "background": "rgba(100,100,100,0.1", "fontSize": "2vw" }}>
           {this.checkEquip(game) ? this.getEquip(game).name + "\n" : p.inStats.active[0] === 1 && p.inStats.active[1] <= p.inventory.length ? p.inventory[p.inStats.active[1] - 1].name : "Level: " + p.XP.level + "\n"}
           {this.checkEquip(game) ? "" : p.inStats.active[0] === 1 && p.inStats.active[1] <= p.inventory.length ? p.inventory[p.inStats.active[1] - 1].description ? ": \n\n" + p.inventory[p.inStats.active[1] - 1].description : "" : "HP: " + p.health + "/" + p.maxHealth + "\n"}
           {this.checkEquip(game) ? "" : p.inStats.active[0] === 1 && p.inStats.active[1] <= p.inventory.length ? "" : "Mana: " + p.mana + "/" + p.maxMana}<br></br>
@@ -344,7 +344,7 @@ class Board extends React.Component {
     return <button className="box" style={{ width: "90%", "margin-left": "40%", background: p.inStats.active[0] === 0 ? (p.inStats.active[1] === i + 1 ? "#a3a3a3" : "#d4d4d4") : "#d4d4d4" }}
       title={title}>
       <span style={{
-        "text-shadow": "0 0 " + color,
+        "textShadow": "0 0 " + color,
         "color": "rgba(0, 0, 0, " + transparency + ")"
       }}>
         {char}
@@ -366,7 +366,7 @@ class Board extends React.Component {
       return <div style={{ display: "inline" }}>
         {this.tinyBoard(i, k - 1, rows, columns, 0, debug)}
         <button className="box" style={{
-          height: (94 / game.board[0].length) + "%", "border-style": "none", "font-size": "0px", width: (94 / game.board.length) + "%", margin: "0%", padding: "0%",
+          height: (94 / game.board[0].length) + "%", "border-style": "none", "fontSize": "0px", width: (94 / game.board.length) + "%", margin: "0%", padding: "0%",
           //background: (game.board[k][i] === 1 ? "black" : "#d4d4d4")
           background: (game.displayMap.colors[(debug ? game.board[k][i] : game.displayMap.board[k][i])])
         }}>
@@ -455,7 +455,7 @@ class Board extends React.Component {
         title={(charInArr(game.player.inventory, i - 1) === emptyEmoji ? "" : objectSummary(game.player.inventory[i - 1]))}
       >
         <span style={{
-          "text-shadow": "0 0 " + colorInArr(game.player.inventory, i - 1),
+          "textShadow": "0 0 " + colorInArr(game.player.inventory, i - 1),
           "color": "rgba(0, 0, 0, " + transparencyInArr(game.player.inventory, i - 1) + ")"
         }}>
           {charInArr(game.player.inventory, i - 1)}
@@ -529,18 +529,6 @@ class StartUp extends React.Component {
   render() {
     if (this.state.entered) {
       game = createGame(1);
-      if (localStorage.game !== undefined) {
-        delete localStorage.game
-        //console.log("gamestring", localStorage.game)
-        //let newGame = JSON.parse(localStorage.game)
-        //console.log("loading game", newGame)
-        //game = newGame
-        //delete localStorage.game
-      }
-      else {
-        console.log("no game stored")
-        delete localStorage.game
-      }
       return (
         <Game
           name={this.state.value}
@@ -645,7 +633,7 @@ function Game(props) {
       }
     }
     //Store game in storage
-    localStorage.game = JSON.stringify(game)
+    //localStorage.game = JSON.stringify(game)
   }
   return (
     <Board
