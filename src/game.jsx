@@ -310,6 +310,26 @@ function spellUse(game, player, spell) {
   return free;
 }
 
+function newFloor(game){
+  let p = game.player
+  let newGame = createGame(game.floor + 1)
+  newGame.objects.splice(0, 1)
+  for (const [key, value] of Object.entries(newGame)) {
+    if (key !== "player" && key !== "floor" && key !== "class")
+      game[key] = value
+  }
+  game.objects.unshift(game.player)
+  p.x = newGame.player.x
+  p.y = newGame.player.y
+
+  game.floor = newGame.floor
+  p.input = null;
+
+  console.log(game.floor)
+  return game
+  //console.log(game)
+}
+
 export function update(game) {
   let p = game.player
   let c = game.camera
@@ -383,23 +403,8 @@ export function update(game) {
           p.inShop.shop = findObjInDict(game, p.x, p.y).shop
         }
         if (findObjInDict(game, p.x, p.y).buildingType === "stairs") {
-          let newGame = createGame(game.floor + 1)
-          setTimeout(() => {
-          newGame.objects.splice(0, 1)
-          for (const [key, value] of Object.entries(newGame)) {
-            if (key !== "player" && key !== "floor" && key !== "class")
-              game[key] = value
-          }
-          game.objects.unshift(game.player)
-          p.x = newGame.player.x
-          p.y = newGame.player.y
-
-          game.floor = newGame.floor
-          p.input = null;
-            
-          //return game
-          }, 50)
-          //console.log(game)
+          game = newFloor(game)
+          return game
         }
         p.input = null;
       }
