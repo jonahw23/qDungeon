@@ -496,8 +496,8 @@ class Board extends React.Component {
   render() {
     let out = update(game)
     if (out) {
-      //game = out
-      //update(game)
+      game = out
+      update(game)
     }
     return (
       this.drawBoard(game, 0)
