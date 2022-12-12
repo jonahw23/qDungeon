@@ -882,7 +882,7 @@ export function update(game) {
   for (let x = 0; x < c.w; x++) {
     for (let y = 0; y < c.h; y++) {
 
-      if (x + c.x == p.x && y + c.y == p.y) {
+      if (x + c.x === p.x && y + c.y === p.y) {
         game.displayMap.board[x + c.x][y + c.y] = 2
       }
       else if (c.board[x][y].visible && game.board[x + c.x][y + c.y] === 0) {
